@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <complex>
 
-namespace Math
+namespace GMath
 {
 
 	template<unsigned int N, typename T>

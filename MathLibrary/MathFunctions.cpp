@@ -3,7 +3,7 @@
 
 #include "MathFunctions.h"
 
-namespace Math
+namespace GMath
 {
 	void SetIdentity(mat4f& matrix)
 	{

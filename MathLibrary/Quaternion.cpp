@@ -1,7 +1,7 @@
 #include "Quaternion.h"
 
 
-namespace Math
+namespace GMath
 {
 
 	Quaternion::Quaternion()

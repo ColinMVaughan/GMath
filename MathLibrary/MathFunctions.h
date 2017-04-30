@@ -8,7 +8,7 @@
 
 //#define PI 3.14159265358979323846f
 
-namespace Math
+namespace GMath
 {
 
 	void SetIdentity(mat4f& matrix);

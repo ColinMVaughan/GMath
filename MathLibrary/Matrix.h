@@ -6,7 +6,7 @@
 #include "Vector.h"
 
 
-namespace Math
+namespace GMath
 {
 	//IMPORTANT: This matrix class is implemenmted as column major
 	template <unsigned int C, unsigned int R, typename T>

@@ -1,11 +1,10 @@
 #include <gtest/gtest.h>
-//#include <../../MathLibrary/MathLibrary.h>
 #include "../MathLibrary/MathLibrary.h"
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-void OutputMatrix(Math::mat4f &matrix)
+void OutputMatrix(GMath::mat4f &matrix)
 {
 
 	std::cout << "\n\n";
@@ -19,7 +18,7 @@ void OutputMatrix(Math::mat4f &matrix)
 
 TEST(MatrixTest, DefaultConstructor)
 {
-	Math::mat4f test;
+	GMath::mat4f test;
 	for(int y = 0; y< 4; ++y)
 	{
 		for (int x = 0; x< 4; ++x)
@@ -31,7 +30,7 @@ TEST(MatrixTest, DefaultConstructor)
 
 TEST(MatrixTest, SecondConstructor)
 {
-	Math::mat4f test(1);
+	GMath::mat4f test(1);
 	for (int y = 0; y< 4; ++y)
 	{
 		for (int x = 0; x< 4; ++x)
@@ -44,7 +43,7 @@ TEST(MatrixTest, SecondConstructor)
 
 TEST(MatrixTest, Indexing)
 {
-	Math::mat4f mat;
+	GMath::mat4f mat;
 
 	mat(3, 0) = 1.0f;
 	mat(3, 1) = 1.0f;
@@ -60,8 +59,8 @@ TEST(MatrixTest, Indexing)
 
 TEST(MatrixTest, Equality)
 {
-	Math::mat4f mat1;
-	Math::mat4f mat2;
+	GMath::mat4f mat1;
+	GMath::mat4f mat2;
 
 	mat1(0, 0) = 1.0f;
 
@@ -70,8 +69,8 @@ TEST(MatrixTest, Equality)
 
 TEST(MatrixTest, Assignment)
 {
-	Math::mat4f mat1;
-	Math::mat4f mat2;
+	GMath::mat4f mat1;
+	GMath::mat4f mat2;
 
 	mat1(0, 0) = 1.0f;
 	mat1(1, 0) = 2.0f;
@@ -89,7 +88,7 @@ TEST(MatrixTest, Assignment)
 TEST(MatrixTest, Multiply)
 {
 
-	Math::mat4f mat;
+	GMath::mat4f mat;
 	mat(0, 0) = 1.0f;
 	mat(1, 1) = 1.0f;
 	mat(2, 2) = 1.0f;
@@ -99,7 +98,7 @@ TEST(MatrixTest, Multiply)
 	mat(3, 1) = 5.0f;
 	mat(3, 2) = 5.0f;
 
-	Math::mat4f mat2;
+	GMath::mat4f mat2;
 	mat2(0, 0) = 1.0f;
 	mat2(1, 1) = 1.0f;
 	mat2(2, 2) = 1.0f;
@@ -109,7 +108,7 @@ TEST(MatrixTest, Multiply)
 	mat2(3, 1) = 5.0f;
 	mat2(3, 2) = 5.0f;
 
-	Math::mat4f result = mat * mat2;
+	GMath::mat4f result = mat * mat2;
 	
 
 
@@ -124,7 +123,7 @@ TEST(MatrixTest, IdentityMatrix)
 
 TEST(MatrixTest, VectorMultiply)
 {
-	Math::mat4f mat;
+	GMath::mat4f mat;
 	mat(0, 0) = 1.0f;
 	mat(1, 1) = 1.0f;
 	mat(2, 2) = 1.0f;
@@ -134,8 +133,8 @@ TEST(MatrixTest, VectorMultiply)
 	mat(3, 1) = 5.0f;
 	mat(3, 2) = 5.0f;
 
-	Math::vec4f vec({1,2,3,1});
-	Math::vec4f result;
+	GMath::vec4f vec({1,2,3,1});
+	GMath::vec4f result;
 
 	result = mat * vec;
 
@@ -148,10 +147,10 @@ TEST(MatrixTest, VectorMultiply)
 
 TEST(MatrixTest, Projection)
 {
-	Math::mat4f TestMat;
+	GMath::mat4f TestMat;
 	glm::mat4x4 CorrectMat;
 
-	Math::SetFrustumProjection(TestMat, 90, (16.0 / 9.0), 0.01, 1000);
+	GMath::SetFrustumProjection(TestMat, 90, (16.0 / 9.0), 0.01, 1000);
 	CorrectMat = glm::perspective(90.0, (16.0 / 9.0), 0.01, 1000.0);
 
 
