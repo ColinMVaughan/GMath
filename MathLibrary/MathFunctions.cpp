@@ -91,12 +91,12 @@ namespace GMath
 		float tanHalfFov = tanf(fov / 2.0f);
 		camera(0, 0) = 1.0f / (aspect * tanHalfFov);
 		camera(1, 1) = 1.0f / tanHalfFov;
-		camera(2, 3) = 1.0f;
+		camera(2, 3) = -1.0f;
 
 		camera(2,2) = -(far + near) / (far - near);
 		camera(3, 2) = -(2.0f * far * near) / (far - near);
 
-
+		return;
 
 		//-----------------------------------------------------
 		//float tangent = tanf((fov / 2) * 0.01745329251);

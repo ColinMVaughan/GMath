@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../MathLibrary/MathLibrary.h"
+#include <MathLibrary.h>
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -15,6 +15,26 @@ void OutputMatrix(GMath::mat4f &matrix)
 	std::cout << matrix(0, 3) << " " << matrix(1, 3) << " " << matrix(2, 3) << " " << matrix(3, 3) << "\n";
 }
 
+bool CompareGLM(GMath::mat4f& matrix, glm::mat4x4& test)
+{
+	float rangeEQ = 0;
+	for(int y = 0; y < 4; ++y)
+	{
+		for (int x = 0; x < 4; ++x)
+		{
+			float bla1 = matrix(y, x);
+			float bla2 = test[y][x];
+
+			rangeEQ = matrix(y, x) - test[y][x];
+			if (rangeEQ > 0.0001f || rangeEQ < -0.0001f)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
 
 TEST(MatrixTest, DefaultConstructor)
 {
@@ -153,6 +173,8 @@ TEST(MatrixTest, Projection)
 	GMath::SetFrustumProjection(TestMat, 90, (16.0 / 9.0), 0.01, 1000);
 	CorrectMat = glm::perspective(90.0, (16.0 / 9.0), 0.01, 1000.0);
 
+	EXPECT_TRUE(CompareGLM(TestMat, CorrectMat));
 
-	EXPECT_TRUE(true);
+	float bla = 0;
 }
+
