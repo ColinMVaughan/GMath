@@ -24,6 +24,8 @@ namespace GMath
 
 	void SetRotate(mat4f& matrix, Quaternion rotation);
 	void SetTranslate(mat4f& matrix, vec3f position);
+	void Translate(mat4f& matrix, vec3f translate);
+
 	void SetScale(mat4f& matrix, vec3f scale);
 
 	void RotateX(mat4f& matrix, float rotation);

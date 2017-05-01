@@ -147,12 +147,19 @@ namespace GMath
 	}
 
 	// Sets the transform component of the matrix
-	void SetTranslate(mat4f& matrix, vec3f translate)
+	void SetTranslate(mat4f& matrix, vec3f position)
 	{
-		matrix(3, 0) = translate[0];
-		matrix(3, 1) = translate[1];
-		matrix(3, 2) = translate[2];
+		matrix(3, 0) = position[0];
+		matrix(3, 1) = position[1];
+		matrix(3, 2) = position[2];
 
+	}
+
+	void Translate(mat4f& matrix, vec3f translate)
+	{
+		matrix(3, 0) += translate[0];
+		matrix(3, 1) += translate[1];
+		matrix(3, 2) += translate[2];
 	}
 
 	//Sets the scale component of a matrix.
@@ -161,6 +168,10 @@ namespace GMath
 		matrix(0, 0) = scale[0];
 		matrix(1, 1) = scale[1];
 		matrix(2, 2) = scale[2];
+	}
+
+	void RotateX(mat4f& matrix, float rotation)
+	{
 	}
 
 	void RotateY(mat4f& matrix, float rotation)
