@@ -21,7 +21,7 @@ namespace GMath
 		~vector();
 
 		T& operator[](const int index);
-		T& operator[](const int index) const;
+		const T& operator[](const int index) const;
 
 		vector operator+(vector RHS);
 		vector operator-(vector RHS);
@@ -56,7 +56,7 @@ namespace GMath
 	}
 
 	template <unsigned N, typename T>
-	T& vector<N, T>::operator[](const int index) const
+	const T& vector<N, T>::operator[](const int index) const
 	{
 		return values[index];
 	}

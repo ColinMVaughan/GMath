@@ -15,6 +15,16 @@ void OutputMatrix(GMath::mat4f &matrix)
 	std::cout << matrix(0, 3) << " " << matrix(1, 3) << " " << matrix(2, 3) << " " << matrix(3, 3) << "\n";
 }
 
+void OutputGLM(glm::mat4x4& matrix)
+{
+	std::cout << "\n\n";
+	std::cout << "GLM Matrix Output: \n";
+	std::cout << matrix[0][0] << " " << matrix[1][0] << " " << matrix[2][0] << " " << matrix[3][0] << "\n";
+	std::cout << matrix[0][1] << " " << matrix[1][1] << " " << matrix[1][1] << " " << matrix[3][1] << "\n";
+	std::cout << matrix[0][2] << " " << matrix[1][2] << " " << matrix[2][2] << " " << matrix[3][2] << "\n";
+	std::cout << matrix[0][3] << " " << matrix[1][3] << " " << matrix[2][3] << " " << matrix[3][3] << "\n";
+}
+
 bool CompareGLM(GMath::mat4f& matrix, glm::mat4x4& test)
 {
 	float rangeEQ = 0;
@@ -26,7 +36,7 @@ bool CompareGLM(GMath::mat4f& matrix, glm::mat4x4& test)
 			float bla2 = test[y][x];
 
 			rangeEQ = matrix(y, x) - test[y][x];
-			if (rangeEQ > 0.0001f || rangeEQ < -0.0001f)
+			if (rangeEQ > 0.00000001f || rangeEQ < -0.00000001f)
 			{
 				return false;
 			}
@@ -159,7 +169,7 @@ TEST(MatrixTest, VectorMultiply)
 	result = mat * vec;
 
 
-	std::cout << "Vector Output: \n" << result[0] << "," << result[1] << "," << result[2] << "\n";
+	//std::cout << "Vector Output: \n" << result[0] << "," << result[1] << "," << result[2] << "\n";
 	EXPECT_EQ(6, result[0]);
 	EXPECT_EQ(7, result[1]);
 	EXPECT_EQ(8, result[2]);
@@ -170,11 +180,18 @@ TEST(MatrixTest, Projection)
 	GMath::mat4f TestMat;
 	glm::mat4x4 CorrectMat;
 
-	GMath::SetFrustumProjection(TestMat, 90, (16.0 / 9.0), 0.01, 1000);
+	GMath::SetFrustumProjection(TestMat, 90, (16.0 / 9.0), 0.01, 1000.0);
 	CorrectMat = glm::perspective(90.0, (16.0 / 9.0), 0.01, 1000.0);
+
+
+	OutputMatrix(TestMat);
+	OutputGLM(CorrectMat);
 
 	EXPECT_TRUE(CompareGLM(TestMat, CorrectMat));
 
 	float bla = 0;
+
+	glm::mat4x4 test;
+	rotate(test, 90.0f, glm::vec3(1, 0, 0));
 }
 

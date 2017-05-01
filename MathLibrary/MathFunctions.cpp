@@ -146,40 +146,73 @@ namespace GMath
 		matrix = rotation.ToMatrix();
 	}
 
-	// Sets the transform component of the matrix
-	void SetTranslate(mat4f& matrix, vec3f position)
-	{
-		matrix(3, 0) = position[0];
-		matrix(3, 1) = position[1];
-		matrix(3, 2) = position[2];
-
-	}
-
 	void Translate(mat4f& matrix, vec3f translate)
 	{
-		matrix(3, 0) += translate[0];
-		matrix(3, 1) += translate[1];
-		matrix(3, 2) += translate[2];
+		mat4f temp;
+		SetIdentity(temp);
+
+		temp(3, 0) = translate[0];
+		temp(3, 1) = translate[1];
+		temp(3, 2) = translate[2];
+
+		matrix = matrix * temp;
+		return;
 	}
 
 	//Sets the scale component of a matrix.
 	void SetScale(mat4f& matrix, vec3f scale)
 	{
-		matrix(0, 0) = scale[0];
-		matrix(1, 1) = scale[1];
-		matrix(2, 2) = scale[2];
+		mat4f temp;
+		SetIdentity(temp);
+
+		temp(0, 0) = scale[0];
+		temp(1, 1) = scale[1];
+		temp(2, 2) = scale[2];
+
+		matrix = matrix * temp;
+		return;
 	}
 
 	void RotateX(mat4f& matrix, float rotation)
 	{
+		mat4f temp;
+		SetIdentity(temp);
+
+		temp(1, 1) = cos(rotation);
+		temp(1, 2) = sin(rotation);
+		temp(2, 1) = -sin(rotation);
+		temp(2, 2) = cos(rotation);
+
+		matrix = matrix * temp;
+		return;
 	}
 
 	void RotateY(mat4f& matrix, float rotation)
 	{
+		mat4f temp;
+		SetIdentity(temp);
+
+		temp(0, 0) = cos(rotation);
+		temp(0, 2) = -sin(rotation);
+		temp(2, 0) = sin(rotation);
+		temp(2, 2) = cos(rotation);
+
+		matrix = matrix * temp;
+		return;
 	}
 
 	void RotateZ(mat4f& matrix, float rotation)
 	{
+		mat4f temp;
+		SetIdentity(temp);
+
+		temp(0, 0) = cos(rotation);
+		temp(0, 1) = sin(rotation);
+		temp(1, 0) = -sin(rotation);
+		temp(1, 1) = cos(rotation);
+
+		matrix = matrix * temp;
+		return;
 	}
 
 
