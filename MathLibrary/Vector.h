@@ -1,7 +1,9 @@
-//Colin Vaughan 
-//December 2016
+#ifndef GMATH_VECTOR_H
+#define GMATH_VECTOR_H
 
-#pragma once
+
+
+
 #include <initializer_list>
 #include <assert.h>
 #include <complex>
@@ -23,15 +25,15 @@ namespace GMath
 		T& operator[](const int index);
 		T& operator[](const int index) const;
 
-		vector operator+(vector RHS);
-		vector operator-(vector RHS);
+		vector operator+(const vector& RHS);
+		vector operator-(const vector& RHS);
 		vector operator*(float Scalar);
 
-		void operator=(vector RHS);
+		inline void operator=(vector RHS);
 
-		void operator+=(vector RHS);
-		void operator-=(vector RHS);
-		void operator*=(float Scalar);
+		inline void operator+=(vector RHS);
+		inline void operator-=(vector RHS);
+		inline void operator*=(float Scalar);
 
 		float Length();
 		void Normalize();
@@ -222,3 +224,5 @@ namespace GMath
 		vector[1] = y;
 	}
 }
+
+#endif

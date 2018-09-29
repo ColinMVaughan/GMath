@@ -1,5 +1,4 @@
-//Colin Vaughan 
-//December 2016
+
 
 #pragma once
 

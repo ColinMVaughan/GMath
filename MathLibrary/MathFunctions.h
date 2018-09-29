@@ -1,7 +1,6 @@
-//Colin Vaughan 
-//December 2016
+#ifndef GMATH_FUNCTIONS_H
+#define GMATH_FUNCTIONS_H
 
-#pragma once
 #include "Matrix.h"
 #include "Vector.h"
 #include "Quaternion.h"
@@ -60,3 +59,4 @@ namespace GMath
 	}
 }
 
+#endif

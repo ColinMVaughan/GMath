@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GMATH_QUATERNION_H
+#define GMATH_QUATERNION_H
+
 #include "Vector.h"
 #include "Matrix.h"
 
@@ -25,3 +27,5 @@ namespace GMath
 	};
 
 }
+
+#endif

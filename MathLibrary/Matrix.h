@@ -1,7 +1,7 @@
-//Colin Vaughan 
-//December 2016
+#ifndef GMATH_MATRIX_H
+#define GMATH_MATRIX_H
 
-#pragma once
+
 #include <initializer_list>
 #include "Vector.h"
 
@@ -204,3 +204,5 @@ namespace GMath
 	}
 
 }
+
+#endif
